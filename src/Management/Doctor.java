@@ -9,7 +9,7 @@ public class Doctor {
 
         private Connection connection;
 
-    public Doctor(Connection connection, Scanner scanner) {
+    public Doctor(Connection connection) {
             this.connection = connection;
         }
         public void viewDoctors() {
