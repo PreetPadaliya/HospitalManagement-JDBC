@@ -78,7 +78,7 @@ public class Patient{
         }
         catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
+        return false;
     }
 }
