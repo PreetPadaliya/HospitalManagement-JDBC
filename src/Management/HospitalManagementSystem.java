@@ -54,14 +54,14 @@ public class HospitalManagementSystem {
                     case 4:
                         bookAppointment(patient,doctor,connection,scanner );
                         System.out.println();
+                        break;
                     case 5:
                         return;
                     default:
                         System.out.println("Enter valid choice");
+                        break;
                 }
             }
-
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -77,7 +77,7 @@ public class HospitalManagementSystem {
         String appointmentDate = scanner.next();
         if (patient.getPatientById(patientId) && doctor.getDoctorById(doctorId)){
             if (checkDoctorAvaibility(doctorId,appointmentDate,connection)){
-                String appointmentQuery = "insert into appointments(patient_id , doctor_id , appointment_date) values(?,?,?)";
+                String appointmentQuery = "insert into appointment(patient_id , doctor_id , appointment_date) values(?,?,?)";
                 try {
                     PreparedStatement preparedStatement = connection.prepareStatement(appointmentQuery);
                     preparedStatement.setInt(1,patientId);
@@ -105,7 +105,7 @@ public class HospitalManagementSystem {
     }
 
     public static boolean checkDoctorAvaibility(int doctorId , String appointmentDate , Connection connection){
-        String query = "select count(*) from appointments where doctor_id = ? and appointment_date = ? ";
+        String query = "select count(*) from appointment where doctor_id = ? and appointment_date = ? ";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1,doctorId);
